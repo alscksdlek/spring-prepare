@@ -3,8 +3,14 @@ package com.sparta.spring_prepare.repository;
 import com.sparta.spring_prepare.entity.Memo;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface MemoRepository extends JpaRepository<Memo, Long> {
+import java.util.List;
 
+public interface MemoRepository extends JpaRepository<Memo, Long> {
+    List<Memo> findAllByOrderByModifiedAtDesc();
+
+    List<Memo> findAllByUsername(String usrename);
+
+    List<Memo> findAllByContentsContainsOrderByModifiedAtDesc(String keyword);
 }
 
 // JDBC Template
